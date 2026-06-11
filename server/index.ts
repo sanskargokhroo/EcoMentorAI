@@ -21,7 +21,11 @@ app.use(helmet({ xssFilter: true, hidePoweredBy: true, noSniff: true }));
 const allowedOrigins = ['http://localhost:5173', 'https://ecomentor-ai.vercel.app'];
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    // Check if origin is allowed (Vercel production or any localhost port)
+    if (origin === 'https://ecomentor-ai.vercel.app' || /^http:\/\/localhost:\d+$/.test(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
