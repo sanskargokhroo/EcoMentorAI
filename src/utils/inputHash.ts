@@ -1,6 +1,6 @@
 // File: src/utils/inputHash.ts — Utility to generate a hash from user input for caching
 
-import { UserInputData } from '../types';
+import { UserInputData } from '../types/index.js';
 
 /**
  * Generates a simple string hash from user input data.

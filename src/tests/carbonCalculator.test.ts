@@ -7,6 +7,7 @@ import { UserInputData } from '../types';
 
 describe('Carbon Calculator Logic', () => {
   const baseInput: UserInputData = {
+    name: 'Test User',
     dailyTravelKm: 10,
     transportType: 'car',
     monthlyElectricityKWh: 100,

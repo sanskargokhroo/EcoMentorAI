@@ -2,6 +2,7 @@
 
 import { describe, it, expect } from 'vitest';
 import { generateInputHash } from '../utils/inputHash';
+import { UserInputData } from '../types';
 
 describe('Utility Functions', () => {
   // 8. test hash generation consistency

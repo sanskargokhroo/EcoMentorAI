@@ -1,6 +1,6 @@
 // File: src/tests/components.test.tsx — Unit tests for React components
 
-import React from 'react';
+
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import CarbonForm from '../components/CarbonForm';
@@ -30,8 +30,9 @@ describe('React Components', () => {
   // 10. CarbonForm component: shows loading state on submit
   it('shows loading state on CarbonForm when isLoading is true', () => {
     render(<CarbonForm onSubmit={vi.fn()} isLoading={true} />);
-    expect(screen.getByText('Calculating...')).toBeInTheDocument();
-    expect(screen.getByRole('button')).toBeDisabled();
+    const submitBtn = screen.getByText('Calculating...');
+    expect(submitBtn).toBeInTheDocument();
+    expect(submitBtn).toBeDisabled();
   });
 
   // 11. GreenScore component: renders correct rating letter

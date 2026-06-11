@@ -29,7 +29,7 @@ const ProductScanner: React.FC = () => {
       
       const selectedDeviceId = videoInputDevices[0].deviceId;
       
-      readerRef.current.decodeFromVideoDevice(selectedDeviceId, videoRef.current!, (result, err) => {
+      readerRef.current.decodeFromVideoDevice(selectedDeviceId, videoRef.current!, (result) => {
         if (result) {
           const code = result.getText();
           setBarcode(code);

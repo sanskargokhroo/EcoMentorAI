@@ -1,7 +1,7 @@
 // File: src/utils/carbonCalculator.ts — Pure functions for carbon footprint calculations
 
-import { TRANSPORT_EMISSIONS, ELECTRICITY_EMISSION_FACTOR, DIET_EMISSIONS, SHOPPING_EMISSION_FACTOR, NATIONAL_AVERAGE_INDIA, GLOBAL_AVERAGE } from '../constants/emissionFactors';
-import { UserInputData, CalculationResult, SustainabilityRating, EmissionBreakdown } from '../types';
+import { TRANSPORT_EMISSIONS, ELECTRICITY_EMISSION_FACTOR, DIET_EMISSIONS, SHOPPING_EMISSION_FACTOR, NATIONAL_AVERAGE_INDIA, GLOBAL_AVERAGE } from '../constants/emissionFactors.js';
+import { UserInputData, CalculationResult, SustainabilityRating, EmissionBreakdown } from '../types/index.js';
 
 /**
  * Calculates the monthly carbon footprint based on user inputs.

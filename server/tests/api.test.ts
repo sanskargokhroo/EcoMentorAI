@@ -12,6 +12,7 @@ vi.mock('../services/aiService.js', () => ({
 
 describe('API Integration Tests', () => {
   const validPayload = {
+    name: 'Test User',
     dailyTravelKm: 10,
     transportType: 'car',
     monthlyElectricityKWh: 100,

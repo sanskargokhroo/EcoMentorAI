@@ -1,3 +1,4 @@
+/// <reference types="vite-plugin-pwa/client" />
 // File: src/main.tsx — Application entry point
 
 import React from 'react';

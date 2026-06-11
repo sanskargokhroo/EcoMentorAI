@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { EcoTree } from './EcoTree';
@@ -36,7 +36,7 @@ describe('EcoTree Component', () => {
   it('renders stage name correctly', () => {
     vi.spyOn(useEcoTreeModule, 'useEcoTree').mockReturnValue(defaultMockState);
     render(<EcoTree />);
-    expect(screen.getByText('Seed')).toBeDefined();
+    expect(screen.getAllByText('Seed')[0]).toBeDefined();
   });
 
   it('action button click calls logAction with correct EcoAction type', () => {

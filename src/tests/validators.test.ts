@@ -7,6 +7,7 @@ describe('Zod Validation', () => {
   // 6. test schema accepts valid inputs
   it('accepts valid input', () => {
     const valid = {
+      name: 'Test User',
       dailyTravelKm: 15,
       transportType: 'bus',
       monthlyElectricityKWh: 150,

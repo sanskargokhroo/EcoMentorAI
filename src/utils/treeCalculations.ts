@@ -1,4 +1,4 @@
-import { TreeStage, LeafEntry, TreeState, TreeRenderData, BranchData, LeafData, FruitData } from '../types/tree.types';
+import { TreeStage, LeafEntry, TreeState, TreeRenderData } from '../types/tree.types';
 import { TREE_STAGES } from '../constants/treeStages';
 
 /**
