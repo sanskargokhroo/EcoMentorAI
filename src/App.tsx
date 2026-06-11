@@ -12,6 +12,12 @@ const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const ProductScanner = React.lazy(() => import('./pages/ProductScanner'));
 
 const App: React.FC = () => {
+  React.useEffect(() => {
+    // Ping the backend on initial load to wake up the Render free tier server early
+    const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+    fetch(`${API_BASE}/health`).catch(() => {});
+  }, []);
+
   return (
     <BrowserRouter>
       {/* SECURITY/A11Y: Skip to main content link */}

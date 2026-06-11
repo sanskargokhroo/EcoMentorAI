@@ -65,7 +65,7 @@ export const generateAICoachResponse = async (input: UserInputPayload): Promise<
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     const result = await model.generateContent(prompt);
     let text = result.response.text();
@@ -160,7 +160,7 @@ export const generateTimeMachineLetter = async (input: UserInputPayload): Promis
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     const result = await model.generateContent(prompt);
     return result.response.text().trim();
