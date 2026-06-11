@@ -7,9 +7,31 @@ import { scanReceipt, parseVoiceTranscript } from '../services/api';
 
 // For Speech Recognition API
 declare global {
+  interface SpeechRecognitionEvent {
+    results: {
+      [index: number]: {
+        [index: number]: { transcript: string };
+      };
+    };
+  }
+  interface SpeechRecognitionErrorEvent {
+    error: string;
+  }
+  interface SpeechRecognition extends EventTarget {
+    continuous: boolean;
+    interimResults: boolean;
+    maxAlternatives: number;
+    lang: string;
+    start(): void;
+    stop(): void;
+    abort(): void;
+    onresult: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any) | null;
+    onerror: ((this: SpeechRecognition, ev: SpeechRecognitionErrorEvent) => any) | null;
+    onstart: ((this: SpeechRecognition, ev: Event) => any) | null;
+  }
   interface Window {
-    SpeechRecognition: any;
-    webkitSpeechRecognition: any;
+    SpeechRecognition: { new (): SpeechRecognition };
+    webkitSpeechRecognition: { new (): SpeechRecognition };
   }
 }
 
@@ -64,7 +86,7 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
         const base64Data = reader.result as string;
         const res = await scanReceipt(base64Data, file.type);
         if (res.success && res.data) {
-          setFormData((prev: any) => ({ ...prev, ...res.data }));
+          setFormData((prev: UserInputData) => ({ ...prev, ...res.data }));
           alert('Receipt scanned successfully! Form auto-filled.');
         }
       };
@@ -92,14 +114,14 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
 
     recognition.onstart = () => setIsListening(true);
     
-    recognition.onresult = async (event: any) => {
+    recognition.onresult = async (event: SpeechRecognitionEvent) => {
       const transcript = event.results[0][0].transcript;
       setIsListening(false);
       setIsScanning(true); // Re-use loading state for API call
       try {
         const res = await parseVoiceTranscript(transcript);
         if (res.success && res.data) {
-          setFormData((prev: any) => ({ ...prev, ...res.data }));
+          setFormData((prev: UserInputData) => ({ ...prev, ...res.data }));
           alert(`Heard: "${transcript}"\nForm auto-filled!`);
         }
       } catch (error) {
@@ -110,7 +132,7 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
       }
     };
 
-    recognition.onerror = (event: any) => {
+    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
       console.error(event.error);
       setIsListening(false);
       alert('Voice recognition error. Try again.');
@@ -121,7 +143,7 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData((prev: any) => ({
+    setFormData((prev: UserInputData) => ({
       ...prev,
       [name]: value
     }));

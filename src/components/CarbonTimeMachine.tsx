@@ -29,8 +29,9 @@ const CarbonTimeMachine: React.FC = () => {
       } else {
         throw new Error("Failed to generate letter");
       }
-    } catch (err: any) {
-      setError(err.message || "A temporal anomaly occurred. Try again.");
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Could not reach the future. Please try again.';
+      setError(errorMessage);
     } finally {
       setIsGenerating(false);
     }

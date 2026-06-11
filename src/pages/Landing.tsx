@@ -98,23 +98,23 @@ const Landing: React.FC = () => {
         {/* Flying Butterflies Animation */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 perspective-[1000px]">
           <div className="absolute top-0 left-0 text-5xl animate-bird-1">
-            <div className="animate-[flutter-wings_0.2s_ease-in-out_infinite]">🦋</div>
+            <div className="animate-[flutter-wings_0.2s_ease-in-out_infinite]"><span role="img" aria-hidden="true">🦋</span></div>
           </div>
           <div className="absolute top-0 left-0 text-4xl animate-bird-2">
-            <div className="animate-[flutter-wings_0.3s_ease-in-out_infinite]">🦋</div>
+            <div className="animate-[flutter-wings_0.3s_ease-in-out_infinite]"><span role="img" aria-hidden="true">🦋</span></div>
           </div>
           <div className="absolute top-0 left-0 text-6xl animate-bird-3">
-            <div className="animate-[flutter-wings_0.25s_ease-in-out_infinite]">🦋</div>
+            <div className="animate-[flutter-wings_0.25s_ease-in-out_infinite]"><span role="img" aria-hidden="true">🦋</span></div>
           </div>
         </div>
 
         {/* Floating Footprints Animation */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute left-[10%] bottom-[10%] text-green-400/20 text-6xl animate-footprint-1">👣</div>
-          <div className="absolute left-[30%] bottom-[20%] text-green-400/20 text-5xl animate-footprint-2">👣</div>
-          <div className="absolute right-[20%] bottom-[15%] text-emerald-300/20 text-7xl animate-footprint-3">👣</div>
-          <div className="absolute right-[40%] bottom-[5%] text-green-500/20 text-6xl animate-footprint-4">👣</div>
-          <div className="absolute left-[50%] bottom-[30%] text-emerald-400/20 text-4xl animate-footprint-5">👣</div>
+          <div className="absolute left-[10%] bottom-[10%] text-green-400/20 text-6xl animate-footprint-1"><span role="img" aria-hidden="true">👣</span></div>
+          <div className="absolute left-[30%] bottom-[20%] text-green-400/20 text-5xl animate-footprint-2"><span role="img" aria-hidden="true">👣</span></div>
+          <div className="absolute right-[20%] bottom-[15%] text-emerald-300/20 text-7xl animate-footprint-3"><span role="img" aria-hidden="true">👣</span></div>
+          <div className="absolute right-[40%] bottom-[5%] text-green-500/20 text-6xl animate-footprint-4"><span role="img" aria-hidden="true">👣</span></div>
+          <div className="absolute left-[50%] bottom-[30%] text-emerald-400/20 text-4xl animate-footprint-5"><span role="img" aria-hidden="true">👣</span></div>
         </div>
 
         {/* Hero Content */}
@@ -122,7 +122,7 @@ const Landing: React.FC = () => {
           <div className="mb-8 flex justify-center animate-glow">
             {/* Earth showing Asia/India */}
             <div className="origin-center">
-              <span className="text-[120px] sm:text-[140px] leading-none drop-shadow-[0_0_50px_rgba(34,197,94,0.8)] block">🌏</span>
+              <span className="text-[120px] sm:text-[140px] leading-none drop-shadow-[0_0_50px_rgba(34,197,94,0.8)] block" role="img" aria-hidden="true">🌏</span>
             </div>
           </div>
           
@@ -140,7 +140,7 @@ const Landing: React.FC = () => {
               to="/calculate"
               className="relative inline-flex items-center justify-center px-10 py-5 text-xl font-extrabold text-green-950 bg-white hover:bg-green-50 rounded-full shadow-2xl transition-transform transform group-hover:scale-105"
             >
-              <span className="mr-3 text-2xl">🌱</span>
+              <span className="mr-3 text-2xl" role="img" aria-hidden="true">🌱</span>
               {t('landing.hero.cta')}
               <svg className="ml-2 w-6 h-6 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -182,7 +182,7 @@ const Landing: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10">
             <div className="glass-card p-10 rounded-3xl border-red-500/30 hover:border-red-500/60 hover:-translate-y-2 transition-all duration-300 group">
-              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(255,0,0,0.5)]">🌪️</div>
+              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(255,0,0,0.5)]"><span role="img" aria-hidden="true">🌪️</span></div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 {t('landing.consequences.1.title')}
               </h3>
@@ -192,7 +192,7 @@ const Landing: React.FC = () => {
             </div>
 
             <div className="glass-card p-10 rounded-3xl border-red-500/30 hover:border-red-500/60 hover:-translate-y-2 transition-all duration-300 group">
-              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(0,150,255,0.5)]">🌊</div>
+              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(0,150,255,0.5)]"><span role="img" aria-hidden="true">🌊</span></div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 {t('landing.consequences.2.title')}
               </h3>
@@ -202,7 +202,7 @@ const Landing: React.FC = () => {
             </div>
 
             <div className="glass-card p-10 rounded-3xl border-red-500/30 hover:border-red-500/60 hover:-translate-y-2 transition-all duration-300 group">
-              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(255,255,0,0.5)]">☠️</div>
+              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(255,255,0,0.5)]"><span role="img" aria-hidden="true">☠️</span></div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 {t('landing.consequences.3.title')}
               </h3>
@@ -217,8 +217,8 @@ const Landing: React.FC = () => {
       {/* FEATURES GRID - Glassmorphism over Nature with Curved Top */}
       <section className="relative py-32 px-6 bg-gradient-to-br from-green-800 to-emerald-950 overflow-hidden curved-top -mt-20">
         {/* Subtle Nature Background Elements */}
-        <div className="absolute top-[0%] right-[-5%] text-[30rem] opacity-5 pointer-events-none rotate-45">🌿</div>
-        <div className="absolute bottom-[-10%] left-[-5%] text-[30rem] opacity-5 pointer-events-none -rotate-12">🌳</div>
+        <div className="absolute top-[0%] right-[-5%] text-[30rem] opacity-5 pointer-events-none rotate-45"><span role="img" aria-hidden="true">🌿</span></div>
+        <div className="absolute bottom-[-10%] left-[-5%] text-[30rem] opacity-5 pointer-events-none -rotate-12"><span role="img" aria-hidden="true">🌳</span></div>
         
         <div className="relative z-10 max-w-7xl mx-auto pt-20">
           <h2 className="text-4xl md:text-5xl font-black text-white text-center mb-20 drop-shadow-md">
@@ -305,7 +305,7 @@ const Landing: React.FC = () => {
       <section className="py-32 px-4 bg-gray-50 dark:bg-gray-900 text-center relative overflow-hidden curved-top -mt-16">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-green-500/10 dark:bg-green-500/5 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="relative z-10 max-w-4xl mx-auto pt-10">
-          <div className="text-6xl mb-8 animate-float">🦋</div>
+          <div className="text-6xl mb-8 animate-float"><span role="img" aria-hidden="true">🦋</span></div>
           <h2 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-8">
             {t('landing.future.title')}
           </h2>
@@ -319,7 +319,7 @@ const Landing: React.FC = () => {
               to="/calculate"
               className="relative inline-flex items-center justify-center px-12 py-6 text-2xl font-extrabold text-white bg-gray-900 dark:bg-black rounded-full hover:scale-105 transition-transform duration-300 border-2 border-transparent hover:border-green-400"
             >
-              <span className="mr-3">👣</span>
+              <span className="mr-3" role="img" aria-hidden="true">👣</span>
               Start Your Green Journey
             </Link>
           </div>

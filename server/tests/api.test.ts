@@ -79,10 +79,17 @@ describe('API Integration Tests', () => {
     expect(res.body.data.aiCoach.topSources).toBeInstanceOf(Array);
   });
 
-  // 5. Rate limiter returns 429 after threshold
+  // 5. Global error handler returns 500 for unhandled errors
+  it('Global error handler catches unhandled errors', async () => {
+    (aiService.generateAICoachResponse as any).mockRejectedValueOnce(new Error('Simulated Internal Error'));
+    const res = await request(app).post('/api/calculate').send(validPayload);
+    expect(res.status).toBe(500);
+    expect(res.body.error).toBe('Internal Server Error');
+  });
+
+  // 6. Rate limiter returns 429 after threshold
   it('Rate limiter blocks excessive requests', async () => {
     let lastStatus = 200;
-    // The aiLimiter allows 10 requests per minute
     for (let i = 0; i < 12; i++) {
       const res = await request(app).post('/api/calculate').send(validPayload);
       lastStatus = res.status;

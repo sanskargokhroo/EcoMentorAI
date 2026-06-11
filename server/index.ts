@@ -15,11 +15,19 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // SECURITY: Use Helmet for strict CSP headers and other security headers
-app.use(helmet());
+app.use(helmet({ xssFilter: true, hidePoweredBy: true, noSniff: true }));
 
 // SECURITY: Configure CORS for allowed origins only
-// Relaxed for hackathon dev environment to handle multiple vite dev servers (5173, 5174, etc)
-app.use(cors());
+const allowedOrigins = ['http://localhost:5173', 'https://ecomentor-ai.vercel.app'];
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 
 // SECURITY: Parse JSON bodies and sanitize against NoSQL injection
 app.use(express.json({ limit: '10kb' }));

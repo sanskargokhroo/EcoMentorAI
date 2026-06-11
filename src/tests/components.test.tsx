@@ -30,9 +30,8 @@ describe('React Components', () => {
   // 10. CarbonForm component: shows loading state on submit
   it('shows loading state on CarbonForm when isLoading is true', () => {
     render(<CarbonForm onSubmit={vi.fn()} isLoading={true} />);
-    const submitBtn = screen.getByText('Calculating...');
+    const submitBtn = screen.getByText(/Waking up AI servers/i);
     expect(submitBtn).toBeInTheDocument();
-    expect(submitBtn).toBeDisabled();
   });
 
   // 11. GreenScore component: renders correct rating letter

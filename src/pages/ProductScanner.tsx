@@ -38,9 +38,9 @@ const ProductScanner: React.FC = () => {
           fetchProductData(code);
         }
       });
-    } catch (err: any) {
-      console.error(err);
-      setError(err.message || 'Failed to start camera.');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to scan product';
+      setError(errorMessage);
       setScanning(false);
     }
   };
@@ -64,9 +64,9 @@ const ProductScanner: React.FC = () => {
       } else {
         throw new Error('Product not found in Open Food Facts database.');
       }
-    } catch (err: any) {
-      console.error(err);
-      setError(err.message || 'Error looking up product.');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Camera error. Please ensure you have given permission.';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
