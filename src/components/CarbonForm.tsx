@@ -45,11 +45,11 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
   
   const [formData, setFormData] = useState<UserInputData>({
     name: '',
-    dailyTravelKm: '10',
+    dailyTravelKm: 10,
     transportType: 'car',
-    monthlyElectricityKWh: '200',
-    dietType: 'omnivore',
-    shoppingFrequency: '2'
+    monthlyElectricityKWh: 100,
+    dietType: 'vegan',
+    shoppingFrequency: 2
   });
 
   const [isScanning, setIsScanning] = useState(false);

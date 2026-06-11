@@ -19,13 +19,13 @@ import CarbonTimeMachine from '../components/CarbonTimeMachine';
 import RouteComparator from '../components/RouteComparator';
 import { EcoTree } from '../components/EcoTree';
 import { useEcoTree } from '../hooks/useEcoTree';
-import { CalculationResult, AICoachResponse } from '../types';
+import { CalculationResult, AICoachResponse, UserInputData } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
 import { getRandomChallenges } from '../constants/challenges';
 
 interface DashboardState {
   name?: string;
-  input?: unknown;
+  input?: Partial<UserInputData>;
   result: CalculationResult | null;
   aiCoach: AICoachResponse | null;
   history: { date: string; totalCO2: number }[];
@@ -255,7 +255,7 @@ const Dashboard: React.FC = () => {
             <CarbonTimeMachine />
             
             {data.input && (
-              <WhatIfSimulator currentInput={data.input} currentCO2={data.result.totalCO2} />
+              <WhatIfSimulator currentInput={data.input as UserInputData} currentCO2={data.result.totalCO2} />
             )}
             
             <CarbonOffset totalCO2={data.result.totalCO2} />

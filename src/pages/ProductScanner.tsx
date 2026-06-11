@@ -5,8 +5,8 @@ import { analyzeProduct } from '../services/api';
 const ProductScanner: React.FC = () => {
   const [scanning, setScanning] = useState(false);
   const [barcode, setBarcode] = useState<string | null>(null);
-  const [productInfo, setProductInfo] = useState<Record<string, unknown> | null>(null);
-  const [aiAnalysis, setAiAnalysis] = useState<Record<string, unknown> | null>(null);
+  const [productInfo, setProductInfo] = useState<Record<string, string | number> | null>(null);
+  const [aiAnalysis, setAiAnalysis] = useState<Record<string, string | number | string[]> | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -142,7 +142,8 @@ const ProductScanner: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{productInfo.name}</h3>
-                <p className="text-gray-500 dark:text-gray-400 uppercase text-xs font-bold tracking-wider">{productInfo.category}</p>
+                <p><span className="font-semibold text-gray-500 dark:text-gray-400">Brand:</span> <span className="text-gray-900 dark:text-white">{String(productInfo.brands || 'Unknown')}</span></p>
+                <p><span className="font-semibold text-gray-500 dark:text-gray-400">Category:</span> <span className="text-gray-900 dark:text-white">{String(productInfo.categories || 'Unknown').split(',')[0]}</span></p>
               </div>
             </div>
 
@@ -151,15 +152,15 @@ const ProductScanner: React.FC = () => {
                 <h4 className="text-orange-800 dark:text-orange-400 font-bold mb-2 flex items-center">
                   <span className="mr-2">🔥</span> Carbon Footprint
                 </h4>
-                <p className="text-lg text-gray-800 dark:text-gray-200">{aiAnalysis.footprint}</p>
+                <p className="text-lg text-gray-800 dark:text-gray-200">{String(aiAnalysis.carbonEstimate)} kg CO2e</p>
               </div>
 
               <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-2xl border border-green-100 dark:border-green-800/50">
                 <h4 className="text-green-800 dark:text-green-400 font-bold mb-2 flex items-center">
                   <span className="mr-2">🌱</span> Greener Alternative
                 </h4>
-                <p className="text-lg text-gray-800 dark:text-gray-200 font-bold mb-2">{aiAnalysis.alternative}</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{aiAnalysis.reasoning}</p>
+                  <h4 className="font-semibold text-gray-800 dark:text-gray-200">Try instead: {String(aiAnalysis.betterAlternative)}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{String(aiAnalysis.reason)}</p>
               </div>
             </div>
 
