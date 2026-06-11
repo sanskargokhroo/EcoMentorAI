@@ -1,6 +1,6 @@
 // File: src/components/CarbonForm.tsx — Form for user footprint inputs
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from '../hooks/useTranslation';
 import { UserInputData } from '../types';
 import { scanReceipt, parseVoiceTranscript } from '../services/api';
@@ -32,7 +32,26 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
 
   const [isScanning, setIsScanning] = useState(false);
   const [isListening, setIsListening] = useState(false);
+  const [progress, setProgress] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (isLoading) {
+      setProgress(0);
+      interval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 98) return 98; // Hold at 98% until actual completion
+          return prev + 2; // Increment by 2% every second (approx 50s total)
+        });
+      }, 1000);
+    } else {
+      setProgress(100);
+      const timeout = setTimeout(() => setProgress(0), 500);
+      return () => clearTimeout(timeout);
+    }
+    return () => clearInterval(interval);
+  }, [isLoading]);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -264,13 +283,25 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={isLoading}
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 disabled:opacity-50 transition-colors"
-      >
-        {isLoading ? 'Calculating...' : t('form.submit')}
-      </button>
+      {isLoading ? (
+        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-md h-10 overflow-hidden relative shadow-inner">
+          <div 
+            className="h-full bg-green-500 transition-all duration-1000 ease-out flex items-center justify-center"
+            style={{ width: `${progress}%` }}
+          >
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center w-full h-full text-sm font-medium text-gray-800 dark:text-gray-100 drop-shadow-sm mix-blend-difference z-10">
+            {t('form.submit')}... {progress}%
+          </div>
+        </div>
+      ) : (
+        <button
+          type="submit"
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 transition-colors"
+        >
+          {t('form.submit')}
+        </button>
+      )}
     </form>
   );
 };
