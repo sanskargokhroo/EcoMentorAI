@@ -290,8 +290,12 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
             style={{ width: `${progress}%` }}
           >
           </div>
-          <div className="absolute inset-0 flex items-center justify-center w-full h-full text-sm font-medium text-gray-800 dark:text-gray-100 drop-shadow-sm mix-blend-difference z-10">
-            {t('form.submit')}... {progress}%
+          <div className="absolute inset-0 flex items-center justify-center w-full h-full text-sm font-medium text-gray-800 dark:text-gray-100 drop-shadow-sm z-10">
+            {progress < 25 && "Waking up AI servers..."}
+            {progress >= 25 && progress < 50 && "Calculating carbon footprint..."}
+            {progress >= 50 && progress < 80 && "Generating AI recommendations..."}
+            {progress >= 80 && "Finalizing eco-report..."}
+            <span className="ml-2 font-bold">{progress}%</span>
           </div>
         </div>
       ) : (
