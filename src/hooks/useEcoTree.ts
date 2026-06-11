@@ -42,7 +42,7 @@ export function useEcoTree(): {
       try {
         setState(JSON.parse(saved));
       } catch (e) {
-        console.error('Failed to parse tree state', e);
+        
       }
     }
   }, []);

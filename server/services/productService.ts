@@ -31,7 +31,7 @@ export const analyzeProductEco = async (productName: string, category: string): 
     
     return JSON.parse(text.trim());
   } catch (error) {
-    console.error("Product AI Error:", error);
+    
     throw new Error('Failed to analyze product');
   }
 };

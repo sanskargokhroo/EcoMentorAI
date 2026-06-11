@@ -25,7 +25,7 @@ const ShareableReport: React.FC<Props> = ({ result, userName }) => {
         link.download = `eco-mentor-score-${new Date().toISOString().split('T')[0]}.png`;
         link.click();
       } catch (err) {
-        console.error('Failed to generate image', err);
+        
       }
     }
   };

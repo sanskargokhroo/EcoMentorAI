@@ -40,7 +40,7 @@ export const analyzeVoiceTranscript = async (transcript: string): Promise<unknow
     
     return JSON.parse(text.trim());
   } catch (error) {
-    console.error("Voice AI Error:", error);
+    
     throw new Error('Failed to parse voice transcript');
   }
 };

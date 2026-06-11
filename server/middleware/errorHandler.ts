@@ -12,6 +12,6 @@ export const errorHandler = (err: unknown, req: Request, res: Response, next: Ne
   }
 
   // Do not expose internal server errors to the client
-  console.error(err);
+  
   res.status(500).json({ error: 'Internal Server Error' });
 };

@@ -103,7 +103,7 @@ export const generateAICoachResponse = async (input: UserInputPayload): Promise<
 
     return finalResponse;
   } catch (error) {
-    console.error("AI Generation Error:", error);
+    
     // Provide a fallback response if AI fails
     return {
       footprint: footprintResult,
@@ -165,7 +165,7 @@ export const generateTimeMachineLetter = async (input: UserInputPayload): Promis
     const result = await model.generateContent(prompt);
     return result.response.text().trim();
   } catch (error) {
-    console.error("AI Time Machine Error:", error);
+    
     if (footprintResult.totalCO2 > 150) {
        return "Dear past self,\n\nI write this from a sweltering summer in 2050. The rivers have dried, and stepping outside without protective gear is dangerous. I wish you had realized back in 2026 that your choices mattered. Please, change your habits before it's too late.\n\n- You, from 2050";
     } else {

@@ -41,7 +41,7 @@ export const analyzeWasteImage = async (base64Image: string, mimeType: string): 
     
     return JSON.parse(text.trim());
   } catch (error) {
-    console.error("Waste AI Error:", error);
+    
     throw new Error('Failed to analyze waste image');
   }
 };

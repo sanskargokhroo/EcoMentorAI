@@ -52,7 +52,7 @@ const AQIBadge: React.FC = () => {
             setAqiData({ aqi: aqiValue, label, color, message });
           }
         } catch (error) {
-          console.error("Failed to fetch AQI", error);
+          
         } finally {
           setLoading(false);
         }

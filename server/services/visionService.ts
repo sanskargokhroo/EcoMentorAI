@@ -46,7 +46,7 @@ export const analyzeReceipt = async (base64Image: string, mimeType: string): Pro
     
     return JSON.parse(text.trim());
   } catch (error) {
-    console.error("Vision AI Error:", error);
+    
     throw new Error('Failed to analyze image');
   }
 };

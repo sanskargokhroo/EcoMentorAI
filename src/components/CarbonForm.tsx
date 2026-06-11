@@ -92,7 +92,7 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
       };
       reader.readAsDataURL(file);
     } catch (error) {
-      console.error(error);
+      
       alert('Failed to scan receipt.');
     } finally {
       setIsScanning(false);
@@ -125,15 +125,15 @@ const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
           alert(`Heard: "${transcript}"\nForm auto-filled!`);
         }
       } catch (error) {
-        console.error(error);
+        
         alert('Failed to parse voice data.');
       } finally {
         setIsScanning(false);
       }
     };
 
-    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-      console.error(event.error);
+    recognition.onerror = () => {
+      
       setIsListening(false);
       alert('Voice recognition error. Try again.');
     };

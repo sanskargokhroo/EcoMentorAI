@@ -44,7 +44,7 @@ const Calculator: React.FC = () => {
       navigate('/dashboard');
     } catch (err) {
       setError('Failed to calculate footprint. Please try again.');
-      console.error(err);
+      
     } finally {
       setIsLoading(false);
     }
