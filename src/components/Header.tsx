@@ -40,7 +40,7 @@ const Header: React.FC = () => {
               className="ml-2 p-2 rounded-full text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500"
               aria-label="Toggle dark mode"
             >
-              {theme === 'dark' ? '☀️' : '🌙'}
+              <span role="img" aria-hidden="true">{theme === 'dark' ? '☀️' : '🌙'}</span>
             </button>
           </nav>
         </div>

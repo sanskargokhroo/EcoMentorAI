@@ -5,8 +5,8 @@ import { analyzeProduct } from '../services/api';
 const ProductScanner: React.FC = () => {
   const [scanning, setScanning] = useState(false);
   const [barcode, setBarcode] = useState<string | null>(null);
-  const [productInfo, setProductInfo] = useState<any>(null);
-  const [aiAnalysis, setAiAnalysis] = useState<any>(null);
+  const [productInfo, setProductInfo] = useState<Record<string, unknown> | null>(null);
+  const [aiAnalysis, setAiAnalysis] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);

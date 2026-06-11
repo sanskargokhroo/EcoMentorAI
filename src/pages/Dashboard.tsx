@@ -25,7 +25,7 @@ import { getRandomChallenges } from '../constants/challenges';
 
 interface DashboardState {
   name?: string;
-  input?: any;
+  input?: unknown;
   result: CalculationResult | null;
   aiCoach: AICoachResponse | null;
   history: { date: string; totalCO2: number }[];

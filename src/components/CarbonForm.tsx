@@ -25,9 +25,9 @@ declare global {
     start(): void;
     stop(): void;
     abort(): void;
-    onresult: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any) | null;
-    onerror: ((this: SpeechRecognition, ev: SpeechRecognitionErrorEvent) => any) | null;
-    onstart: ((this: SpeechRecognition, ev: Event) => any) | null;
+    onresult: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => void) | null;
+    onerror: ((this: SpeechRecognition, ev: SpeechRecognitionErrorEvent) => void) | null;
+    onstart: ((this: SpeechRecognition, ev: Event) => void) | null;
   }
   interface Window {
     SpeechRecognition: { new (): SpeechRecognition };
@@ -43,7 +43,7 @@ interface CarbonFormProps {
 const CarbonForm: React.FC<CarbonFormProps> = ({ onSubmit, isLoading }) => {
   const { t } = useTranslation();
   
-  const [formData, setFormData] = useState<any>({
+  const [formData, setFormData] = useState<UserInputData>({
     name: '',
     dailyTravelKm: '10',
     transportType: 'car',

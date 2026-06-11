@@ -9,7 +9,7 @@ import { generateInputHash } from '../../src/utils/inputHash.js';
 const aiCache = new Map<string, { data: string; expiry: number }>();
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
-export const generateAICoachResponse = async (input: UserInputPayload): Promise<any> => {
+export const generateAICoachResponse = async (input: UserInputPayload): Promise<unknown> => {
   const hash = generateInputHash(input);
 
   // Check cache

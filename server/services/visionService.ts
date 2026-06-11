@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-export const analyzeReceipt = async (base64Image: string, mimeType: string): Promise<any> => {
+export const analyzeReceipt = async (base64Image: string, mimeType: string): Promise<unknown> => {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey || apiKey === 'your_actual_api_key_here') {
     throw new Error('GEMINI_API_KEY is not defined or invalid');
